@@ -1,0 +1,25 @@
+#1
+--
+select * 
+from flickr.photos.info 
+where photo_id in 
+(select id 
+from flickr.photos.search 
+where woe_id in 
+(44418,395269,23424768) and 
+license=4)
+
+#2
+--
+select * from flickr.photos.info where photo_id in 
+(
+  select id from flickr.photos.search where woe_id in 
+  (
+    select match.place.woeId from geo.placemaker where 
+
+    documentContent = "First we take Manhattan and then we take Berlin" 
+
+    and documentType="text/plain" and appid = ""
+  ) 
+  and license=4
+)

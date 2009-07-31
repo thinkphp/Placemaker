@@ -1,0 +1,47 @@
+   html,body{background:#69c;margin:0;padding:0;}
+
+   h2{font-family:Calibri,Arial,Sans-serif;font-size:150%;margin:1em 0;padding:0;}
+
+   h3{font-family:Calibri,Arial,Sans-serif;font-size:120%;}
+
+   #doc{background:#fff;border:1em solid #fff;}
+
+   #tabs .yui-u { position:relative;}
+
+   #tabs .current{background:#369;color:#fff;}
+
+   #tabs h2,#tabs p {margin:.3em 0;padding:0 0 0 35px;}
+
+   #tabs span{font-size: 220%;position:absolute;top:0;left:.07em;}
+
+   h1{font-family:Calibri,Arial,Sans-serif;font-size:200%;margin:0 0 .5em 0;padding:0;font-weight: bold}
+
+   p a{color:#369;}
+
+   p code{color:#333; font-weight:bold;}
+
+  #intro{font-size:120%;padding:.5em;background:#369;color:#fff;line-height:1.5em;}
+
+  textarea{width:100%;height:200px;}
+
+  form div{position:relative;}
+
+  form div.submit{text-align:right;padding:.5em 0;}
+
+  #loadcontent{position:absolute;right:0;bottom:0}
+
+  #url {height: 1.6em;width: 73%}
+ 
+  #map {width:100%;height:300px;}
+
+  #map table,#map td{ border:none;padding:0;}
+
+  textarea{width:100%;height:200px;}
+
+  #ft {margin-top: 10px;font-family: arial,verdana,sans-serif;font-size: 11px;color: #ccc}
+
+  #ft a{color: #69c}
+
+  #highlighttext{border: 1px solid #ccc;padding: 5px;background: #ccc;margin-top: 10px;font-family: arial;font-size: 15px}
+  
+  #highlighttext strong{background:#3f3;padding:2px;color:#000;font-weight: bold}

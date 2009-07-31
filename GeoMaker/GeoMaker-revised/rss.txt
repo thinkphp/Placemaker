@@ -1,0 +1,6 @@
+http://www.telegraph.co.uk/travel/rss
+http://www.telegraph.co.uk/news/rss
+http://rss.news.yahoo.com/rss/world
+http://newsrss.bbc.co.uk/rss/newsonline_uk_edition/front_page/rss.xml
+http://feeds.guardian.co.uk/theguardian/world/rss
+http://www.hotnews.ro/rss/sport

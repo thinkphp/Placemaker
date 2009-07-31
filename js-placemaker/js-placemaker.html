@@ -1,0 +1,298 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd"> 
+<html> 
+<head> 
+ <title>JSPlacemaker - geolocate texts in pur JavaSCript with Yahoo! Placemaker</title> 
+   <link rel="stylesheet" href="http://yui.yahooapis.com/2.7.0/build/reset-fonts-grids/reset-fonts-grids.css" type="text/css"> 
+   <style>
+         html,body{background: #889826;font-family: tohama,arial,verdana}
+         #doc{background: #fff;border: 1em solid #fff;padding: 10px;margin-top: 10px}
+         #hd h1{text-align: center;font-size:20px}
+         #ft{margin-top:2em;color:#999;font-size: 11px}
+         #ft a{color:#666;}
+         #bd{margin: 0px;padding: 0px}
+         .yui-g{padding: 20px;}
+         #results{padding: 10px;background: #F3FFEA;padding: 20px}
+         #results p{padding: 4px}
+         #places{padding: 0}
+         #places div{padding: 4px}
+         h2{font-weight: bold;font-size: 17px}
+         strong{font-weight: bold} 
+         pre div{background: #D7D7D7;padding: 10px;border: 1px solid #000;margin-top: 10px}
+         a{color: #393}
+         input{border: 1px solid #ccc;color: #889826;font-weight:bold;padding: 2px}
+   </style>
+</head> 
+      <body> 
+         <div id="doc" class="yui-t7"> 
+
+          <div id="hd" role="banner"><h1>JSPlacemaker - geolocate texts in JavaScript</h1></div> 
+
+           <div id="bd" role="main"> 
+
+                   <div class="yui-g"> 
+
+                        <strong>Placemaker</strong> - a location extraction web service released at Where 2.0. Using Placemaker you can find all the geographical locations in a feed or a text or a web url and you get them back as an array of places.
+
+                        JS-Placemaker is a JavaScript wrapper for the Yahoo Placemaker web service using an YQL execute table to allow you to extract geo location information out of any text in various languages.
+
+                   </div> 
+
+            <div class="yui-g"> 
+
+                   <div class="yui-u first"> 
+
+
+                       <form id="places">
+                           <div><label for="text0">My name is Adrian. I am a German living in <strong>London, England</strong> and one of my favorite places is <strong>Hong Kong.</strong> I also enjoyed <strong>Brazil</strong> a lot</label><br/><input type="button" value="get Location from text" /></div>
+                           <div><label for="text1">Hello I am Adrian Statescu, Engineer Pro MAC user Web addicted I live in Bucharest but originally I from Cairo</label><br/><input type="button" value="get Location from text" /></div> 
+                           <div><label for="text2">I am Antonio Lupetti, Engineer, Pro Blogger, Mac user, Web addicted. Rome, IT.</label><br/><input type="button" value="get Location from text" /></div> 
+                           <div><label for="text3">Copyright © 2006 Michael Mahemoff. All rights reserved. Printed in the United States of America.Published by O'Reilly Media, Inc. 1005 Gravenstein Highway North, Sebastopol, CA 95472</label><br/><input type="button" value="get Location from text" /></div> 
+
+
+                       </form> 
+                           <div><label for="url">http://www.sitepoint.com/recentarticles/</label><br/><input type="button" onclick="showLocationFromUrl(this)" value="get location from Url"/></div> 
+
+                           <div><label for="url">Salutare, ma numesc Adrian sunt din Romania dar lucrez in Toronto si am calatorit in Franta si Belgia</label><br/><input type="button" onclick="showInConsole(this)" value="get location from text"/></div> 
+ 
+                   </div> 
+ 
+                   <div class="yui-u"> 
+                           <div><h2>Results</h2></div>
+                           <div id="results"></div>
+                   </div> 
+           </div> 
+
+            <div class="yui-g"> 
+
+                  <h2>How to use JSPlacemaker</h2> 
+                  <br/>                  
+                  <p>The first thing to do if you want to use JSPlacemaker is to get get your own application ID for Placemaker.</p><br/>
+                  <p>Then all you need to do is include <a href="js-placemaker.js">js-placemaker.js</a> into your document and override the appID with yours.</p>
+
+<pre><div>
+placemaker.config.appID = '...YOUR APP ID...';
+
+placemaker.getPlacesFromText(text,callback,local);
+                OR 
+placemaker.getPlacesFromUrl(url,callback,local);
+</div></pre>
+<br/>
+<pre>
+        <strong>text</strong>
+
+            freeform text to analiyse
+
+        <strong>callback</strong>
+
+            function to call when the locations have been found
+
+        <strong>local</strong>
+
+            local of the text ex: fr-fr,us-uk
+</pre>
+                  <br/>
+                  <p>The callback function will get an object as the return value. If there weren`t any locations found, this will have an error property otherwise it has a match return value which is an object if there was only one result or an array when there were several</p>
+                  <br/>
+                  <p>Each of these objects has a name, a type, a weoid and a centroid object which contains a latitude and a longitude</p>
+
+<br/>
+For example the following call of JSPlacemaker returns in the object shown in the screenshot
+<br/>
+<pre><div>
+
+  placemaker.getPlacesFromText("Hello I am Adrian Statescu, Engineer Pro 
+ 
+                                MAC user Web addicted I live in Bucharest
+
+                                but originally I from Cairo",
+
+                                function(o){console.log(o)},'');
+
+</div>
+</pre> 
+
+  <img src="pl1.jpg" alt="placemaker"/>
+
+
+<pre><div>
+
+  placemaker.getPlacesFromText("Salutare, ma numesc Adrian sunt din 
+
+                                Romania dar lucrez in Toronto 
+
+                                si am calatorit in Franta si Belgia",
+
+                                function(o){console.log(o)},'ro-ro');
+</div></pre>
+<br/>
+<img src="pl2.jpg" alt="placemaker"/>
+
+
+<pre><div>
+ 
+  placemaker.getPlacesFromUrl("http://www.sitepoint.com/recentarticles/", 
+
+                              function(o){console.log(o);},'');
+
+</div></pre>
+<br/>
+<img src="pl3.jpg" alt="placemaker"/>
+
+         </div>
+
+       </div> 
+
+
+
+
+
+<script type="text/javascript" src="domhelp.js"></script>
+<script type="text/javascript" src="js-placemaker.js"></script>
+
+<script type="text/javascript">
+
+              placemaker.config.appID = 'q0pcWFLIkY77xr0DLfxcK04QfkBMGvEe';
+
+var showInConsole = function(o) {
+
+     var text = o.previousSibling.previousSibling.innerHTML;      
+
+                placemaker.getPlacesFromText(text,function(o){console.log(o)},'ro-ro');
+}
+
+var showLocationFromUrl = function(o) { 
+
+var url = o.previousSibling.previousSibling.innerHTML;
+
+placemaker.getPlacesFromUrl(url,function(json){console.log(json);
+
+                                           document.getElementById('results').innerHTML = ''; 
+
+                                               if(!json.error) {
+
+                                                   if(json.match.place) {
+
+                                                           var curr = json.match.place;
+
+                                                           var output  = '<p><strong>Name:</strong> '+curr.name+'</p>';     
+
+                                                               output += '<p><strong>Type:</strong> '+curr.type+'</p>';     
+
+                                                               output += '<p><strong>Woeid:</strong> '+curr.woeId+'</p>';  
+
+                                                               output += '<p><strong>Latitude:</strong> '+curr.centroid.latitude+'</p>';
+
+                                                               output += '<p><strong>Langitude:</strong> '+curr.centroid.longitude+'</p>';
+
+                                                           document.getElementById('results').innerHTML = output;
+   
+
+                                                   } else {
+
+                                                          var n = json.match.length;
+
+                                                                for(var i=0;i<n;i++) {
+
+                                                                       var  curr = json.match[i].place;
+
+                                                                            output = '<p><strong>Name: </strong> '+curr.name+'</p>';     
+
+                                                                            output += '<p><strong>Type:</strong> '+curr.type+'</p>';     
+
+                                                                            output += '<p><strong>woed:</strong> '+curr.woeId+'</p>';  
+
+                                                                            output += '<p><strong>Latitude:</strong> '+curr.centroid.latitude+'</p>';
+
+                                                                            output += '<p><strong>Langitude:</strong> '+curr.centroid.longitude+'</p><br/>';
+
+                                                                      document.getElementById('results').innerHTML += output;
+
+                                                                }//end for
+
+                                                   }//end if-else
+
+                                               } //end if-error
+
+
+
+},'');
+
+};
+
+var area = $('places');
+
+DOMhelp.addEvent(area,'click',handlerClick,false);
+
+function handlerClick(e) {
+
+         var target = DOMhelp.getTarget(e);
+
+         var locale = '';
+
+             if(target.nodeName.toLowerCase() === 'input' && target.type.toLowerCase() === 'button') {
+
+                       //get innertext from prev prev element
+                       var text = target.previousSibling.previousSibling.innerHTML;
+                   
+                                    placemaker.getPlacesFromText(text,function(json) {console.log(json);
+
+                                           document.getElementById('results').innerHTML = ''; 
+
+                                               if(!json.error) {
+
+                                                   if(json.match.place) {
+
+                                                           var curr = json.match.place;
+
+                                                           var output  = '<p><strong>Name:</strong> '+curr.name+'</p>';     
+
+                                                               output += '<p><strong>Type:</strong> '+curr.type+'</p>';     
+
+                                                               output += '<p><strong>Woeid:</strong> '+curr.woeId+'</p>';  
+
+                                                               output += '<p><strong>Latitude:</strong> '+curr.centroid.latitude+'</p>';
+
+                                                               output += '<p><strong>Langitude:</strong> '+curr.centroid.longitude+'</p>';
+
+                                                           document.getElementById('results').innerHTML = output;
+   
+
+                                                   } else {
+
+                                                          var n = json.match.length;
+
+                                                                for(var i=0;i<n;i++) {
+
+                                                                       var  curr = json.match[i].place;
+
+                                                                            output = '<p><strong>Name: </strong> '+curr.name+'</p>';     
+
+                                                                            output += '<p><strong>Type:</strong> '+curr.type+'</p>';     
+
+                                                                            output += '<p><strong>woed:</strong> '+curr.woeId+'</p>';  
+
+                                                                            output += '<p><strong>Latitude:</strong> '+curr.centroid.latitude+'</p>';
+
+                                                                            output += '<p><strong>Langitude:</strong> '+curr.centroid.longitude+'</p><br/>';
+
+                                                                      document.getElementById('results').innerHTML += output;
+
+                                                                }//end for
+
+                                                   }//end if-else
+
+                                               } //end if-error
+
+                                    },locale);//end function
+             }//end if
+
+}//end handlerclick
+
+
+</script>
+
+      <div id="ft" role="contentinfo"><p>written by <a href="http://thinkphp.ro">Adrian Statescu.</a> Using YUI and Placemaker</p></div> 
+
+   </div><!--end doc -->
+</body> 
+</html> 

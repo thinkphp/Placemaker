@@ -1,0 +1,27 @@
+  html,body{background:#333;color:#ccc;font-family:"Arial Rounded MT Bold",Calibri,Futura,Sans-serif;}
+
+  #bd {background:#efe;border:10px solid #efe;color:#000;}
+
+  textarea {width:100%;height:200px;}
+
+  #markup{height:345px;}
+
+  #template{height:100px;}
+
+  label{display:block;padding-bottom:10px;font-family:calibri,sans-serif;font-size:200%;}
+
+  span{color: #3f3;}
+
+  h1{ font-size:400%; margin:0; padding-bottom:10px; color:#393;}
+
+  #ft {margin-top: 12px;color: #fff;font-family: arial;font-size: 11px}
+ 
+  #ft a{color: #fff}
+
+  .vcard .locality{background: #3f3;color: #000;font-weight:bold}
+
+  .vcard .latitude{background: yellow;color: #000}
+
+  .vcard .longitude{background: yellow;color: #000}
+
+  p.microformatted{margin-top: 10px;border: 1px solid #ccc;padding: 10px;background: #fff;font-family:arial,verdana,sans-serif;font-size: 14px}
